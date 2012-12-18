@@ -1,0 +1,34 @@
+body
+{
+	margin: 0px;
+	padding: 0px;
+	background-color: grey;
+}
+
+/* top, header image area style */
+#header_outterBorder
+{
+	text-align: center;
+	background: black;
+}
+#header
+{
+	width: 800px;
+	height: 107px;
+	margin: auto;
+}
+#header_img
+{
+	float: left;
+}
+
+/* content area style */
+#content_main
+{
+	text-algin: center
+}
+.content_wrapper
+{
+	width: 895px;
+	margin: auto;
+}

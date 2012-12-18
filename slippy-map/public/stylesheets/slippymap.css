@@ -1,0 +1,10 @@
+#slippyMapWrapper{
+    text-align: center;
+}
+#slippyMap{
+    margin: auto;
+    margin-top: 10px;
+    border: ridge 2px;
+    height: 480px;
+    width: 690px;
+}
