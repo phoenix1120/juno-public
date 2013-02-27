@@ -6,11 +6,50 @@ import akka.event.slf4j.Logger
 import java.io._
 import org.apache.commons.httpclient.{HttpStatus, HttpException, HttpClient}
 import org.apache.commons.httpclient.methods.{GetMethod}
+import junoshared.web.WebRequest
+import play.api.libs.json.{Json, JsValue}
+import play.api.libs.json.Json._
+
 
 object TileCache extends Controller{
 
   /**
-   * Hanldes the request for a tile cache tile
+   * REST API - hello world GET
+   * @return
+   */
+  def getHelloWorld  = Action {
+    println("Processing request for  getHelloWorld")
+    Ok("HelloWorld")
+  }
+
+  /**
+   * REST API - hello world POST
+   * @return
+   */
+  def handleHWPost = Action(parse.json) { request =>
+
+    println("Processing request for handleHWPost")
+
+    val hwData = (request.body \ "helloWorld").asOpt[String]
+    if (hwData == None){
+      BadRequest("Missing required param 'helloWorld'")
+    }
+    else {
+      try {
+        val jsonResponse = Map("helloWorldResponse" -> hwData.get)
+
+        Ok(toJson(jsonResponse))
+      }
+      catch {
+        case e: Exception =>
+          println("Exception: " + e.getMessage)
+          InternalServerError(e.getMessage)
+      }
+    }
+  }
+
+  /**
+   * Handles the request for a tile cache tile
    * @param path
    * @param file
    * @return
@@ -27,42 +66,13 @@ object TileCache extends Controller{
 
       val mapServerUri = "http://localhost:9002/assets/images/tiles/tile1.png"
 
-      val hc = new HttpClient()
-      val hcget = new GetMethod(mapServerUri)
+      val responseImg = WebRequest.getResponseAsByteArray(mapServerUri)
 
-      var httpErr = ""
-      var responseImg: InputStream = null
+      // copy to local file
+      val newOutStream = new FileOutputStream(new File(play.Play.application().path() + "/public/images/tiles/tile1.png"))
+      newOutStream.write(responseImg)
 
-      try {
-        val statusCode = hc.executeMethod(hcget)
-
-        if (statusCode != HttpStatus.SC_OK){
-          httpErr = "MapServer GET failed with status code " + statusCode.toString
-          Logger("application").warn(httpErr)
-        }
-        else{
-          responseImg = hcget.getResponseBodyAsStream
-
-          // copy to local file
-          val newOutStream = new FileOutputStream(new File(play.Play.application().path() + "/public/images/tiles/tile1.png"))
-          copyStream(responseImg, newOutStream)
-          newOutStream.flush()
-        }
-      }
-      catch{
-        case httpex: HttpException => {
-          httpErr = "HttpException thrown attempting MapServer GET on " + mapServerUri + ": " + httpex.getMessage
-          Logger("application").warn(httpErr)
-        }
-        case ioex: IOException => {
-          httpErr = "IOExcpetion thrown attempting MapServer GET on " + mapServerUri + ": " + ioex.getMessage
-          Logger("application").warn(httpErr)
-        }
-      }
-      finally{
-        hcget.releaseConnection()
-      }
-
+      newOutStream.flush()
     }
     catch {
       case e: Exception =>
@@ -72,55 +82,6 @@ object TileCache extends Controller{
     controllers.Assets.at(path, file)
   }
 
-  /**
-   * Consumes the given InputStream and byte array chunks to the provided
-   * closure. The first argument to the closure will be the array of bytes
-   * (perhaps partially filled.) The second argument will be the count of the
-   * number of bytes that were read.
-   *
-   * Note: call with the curried style. The stream is closed when finished.
-   */
-  def forEachBytes(in: InputStream)(closure: (Array[Byte], Int) => Unit) {
-    val iobuf = new Array[Byte](1024)
-    var done = false
 
-    while ( ! done ) {
-      val bytes = in.read(iobuf)
-      if ( bytes > 0 ) {
-        closure(iobuf,bytes)
-      } else {
-        done = true
-      }
-    }
-
-    in.close()
-  }
-
-
-  /**
-   * Utility method for copying an InputStream to an OutputStream. Both
-   * streams are closed when finished.
-   *
-   * All the streams are closed when finished.
-   */
-  def copyStream(in: InputStream, out: OutputStream) {
-    var childEx: Exception = null
-
-    try{
-      forEachBytes(in) { (bytes, count) =>
-        out.write(bytes,0,count)
-      }
-    }
-    catch {
-      case e: Exception =>
-        childEx = e
-    }
-    finally {
-      if (in != null) in.close()
-      if (out != null) out.close()
-
-      if (childEx != null) throw childEx
-    }
-  }
 }
 

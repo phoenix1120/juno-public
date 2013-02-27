@@ -8,11 +8,11 @@ object ApplicationBuild extends Build {
     val appVersion      = "1.0-SNAPSHOT"
 
     val appDependencies = Seq(
-      // Add your project dependencies here,
+      "com.junosw.juno-shared" % "juno-shared_2.9.1" % "1.0"
     )
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
-      // Add your own project settings here      
+      resolvers := Seq("Local Play Repository" at "file://" + Path.userHome + "/repository/local")
     )
 
 }

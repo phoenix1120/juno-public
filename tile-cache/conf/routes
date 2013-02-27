@@ -4,5 +4,8 @@
 
 GET     /                           controllers.Application.test
 
+GET     /tilecache/helloworld       controllers.TileCache.getHelloWorld
+POST    /tilecache/helloworldPost   controllers.TileCache.handleHWPost
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.TileCache.getTileImg(path="/public", file)
