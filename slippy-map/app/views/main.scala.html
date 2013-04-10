@@ -33,13 +33,13 @@
         ]
         };
         map = new OpenLayers.Map("slippyMap", options);
-        var newLayer = new OpenLayers.Layer.OSM()
-        @*"New Layer",
-        "http://localhost:9001/assets/images/tiles/${z}/${x}/${y}.png",
-        *@@*"URL_TO_TILES/${z}/${x}/${y}.png",
-        {zoomOffset: 13, resolutions: [19.1092570678711,9.55462853393555,4.77731426696777,2.38865713348389]}*@@*
-        {zoomOffset: 13, resolutions: [128,64,32,16,8,4,2]}
-        );*@
+        var newLayer = new OpenLayers.Layer.OSM(
+        "New Layer",
+        @*"http://localhost:9001/assets/images/tiles/${z}/${x}/${y}.png",*@
+        "http://localhost:9001/assets/images/tiles/0/0/0.png",
+        @*{zoomOffset: 13, resolutions: [19.1092570678711,9.55462853393555,4.77731426696777,2.38865713348389]}*@
+        {zoomOffset: 13, resolutions: [128,64,32,16,8,4,2,1,0]}
+        );
         map.addLayer(newLayer);
         map.setCenter(new OpenLayers.LonLat(-1.25,51.75).transform(fromProjection,toProjection), 0); // 0=relative zoom level
         }
