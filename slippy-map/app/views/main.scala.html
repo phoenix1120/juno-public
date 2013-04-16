@@ -20,28 +20,61 @@
     <script type="text/javascript" src="http://localhost:9000/assets/OpenLayers-2.12/OpenLayers.js"></script>
     @*<script src="http://www.openlayers.org/api/OpenLayers.js"></script>*@
     <script>
-        var fromProjection = new OpenLayers.Projection("EPSG:4326"); // transform from WGS 1984
-        var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection@*
-        var extent = new OpenLayers.Bounds(-1.32,51.71,-1.18,51.80).transform(fromProjection,toProjection);*@
+        @*var fromProjection = new OpenLayers.Projection("EPSG:4326"); // transform from WGS 1984
+        var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+
         function init() {
-        var options = {@*
-        restrictedExtent : extent,*@
+
+        var options = {
         controls: [
         new OpenLayers.Control.Navigation(),
         new OpenLayers.Control.PanZoomBar(),
-        new OpenLayers.Control.Attribution()
         ]
         };
+
         map = new OpenLayers.Map("slippyMap", options);
+
         var newLayer = new OpenLayers.Layer.OSM(
         "New Layer",
-        @*"http://localhost:9001/assets/images/tiles/${z}/${x}/${y}.png",*@
-        "http://localhost:9001/assets/images/tiles/0/0/0.png",
-        @*{zoomOffset: 13, resolutions: [19.1092570678711,9.55462853393555,4.77731426696777,2.38865713348389]}*@
-        {zoomOffset: 13, resolutions: [128,64,32,16,8,4,2,1,0]}
+        "http://localhost:8080/1.0.0/basic/0/0/0.png",
+        {zoomOffset: 9, resolutions: [128,64,32,16,8,4,2,1,0]}
         );
+
         map.addLayer(newLayer);
-        map.setCenter(new OpenLayers.LonLat(-1.25,51.75).transform(fromProjection,toProjection), 0); // 0=relative zoom level
+        map.setCenter(new OpenLayers.LonLat(-1.25,51.75).transform(fromProjection,toProjection), 0);
+        }*@
+
+
+        var lon = 5;
+        var lat = 40;
+        var zoom = 5;
+        var map, layer;
+
+        function init(){
+        var options = {
+        controls: [
+        new OpenLayers.Control.Navigation(),
+        new OpenLayers.Control.PanZoomBar(),
+        new OpenLayers.Control.LayerSwitcher({'ascending':false}),
+        new OpenLayers.Control.MousePosition(),
+        new OpenLayers.Control.OverviewMap()
+        ]
+        };
+
+        map = new OpenLayers.Map('slippyMap', options);
+
+        layer = new OpenLayers.Layer.WMS(
+        "OpenLayers WMS",
+        "http://localhost:8080/",
+        {layers: 'basic'},
+        {projection: new OpenLayers.Projection('4362')},
+        { buffer:2, gutter: '1', isBaseLayer: 'True' },
+        {zoomOffset: 9, resolutions: [128,64,32,16,8,4,2,1,0]}
+        );
+
+        map.addLayer(layer);
+        map.setCenter(new OpenLayers.LonLat(lon, lat), zoom);
+        map.zoomToMaxExtent();
         }
     </script>
 

@@ -33,7 +33,7 @@
 
 [cache]
 type=Disk
-base=/tmp/tilecache
+base=../public/images/tiles/
 
 # [layername] -- all other sections are named layers
 #
@@ -41,7 +41,7 @@ base=/tmp/tilecache
 #   *** if you want to use MapServerLayer, you *must* have Python mapscript
 #       installed and available ***
 # 
-# mapfile=<full path to map file>   
+# mapfile=/home/you/repository/juno-public/tile-cache/world-borders-data
 # url=<full URL of WMS>             
 # layers=<layer>[,<layer2>,<layer3>,...] 
 #                                   *** optional iff layername if what
