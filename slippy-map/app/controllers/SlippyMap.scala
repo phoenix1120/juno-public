@@ -52,7 +52,7 @@ object SlippyMap extends Controller {
     WebRequest.postJson(postHwUrl, Json.toJson(postJson))
   }
 
-  /*
+  /*/*
   * This is the code that calculates the tiles needed
   * */
   case class Tile(x: Int,y: Int, z: Short){
@@ -76,4 +76,6 @@ object SlippyMap extends Controller {
   // ==> Tile(65544,43582,17)
   val uri = tile.toURI
   // ==> http://tile.openstreetmap.org/17/65544/43582.png
+*/
+
 }
