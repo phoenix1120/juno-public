@@ -20,10 +20,7 @@
     <script type="text/javascript" src="http://localhost:9000/assets/OpenLayers-2.12/OpenLayers.js"></script>
     @*<script src="http://www.openlayers.org/api/OpenLayers.js"></script>*@
     <script>
-
-        @*var fromProjection = new OpenLayers.Projection("EPSG:4326"); // transform from WGS 1984
-        var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-
+        @*
         function init() {
 
         var options = {
@@ -49,9 +46,15 @@
         var lat = 40;
         var zoom = 5;
         var map, layer;
+        @*var fromProjection = new OpenLayers.Projection("EPSG:4326"); // transform from WGS 1984*@
+        @*var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection*@
+        @*var toProjection = new OpenLayers.Projection("EPSG:4326"); // to Spherical Mercator Projection*@
+        var extent = new OpenLayers.Bounds(-180,-90,180,90);@*.transform(fromProjection,toProjection);*@
 
         function init(){
         var options = {
+            restrictedExtent: extent,
+            numZoomLevels: 5,
             controls: [
             new OpenLayers.Control.Navigation(),
             new OpenLayers.Control.PanZoomBar(),
@@ -65,14 +68,15 @@
         layer = new OpenLayers.Layer.WMS(
             "OpenLayers WMS",
             "http://localhost:8080/",
-            {layers: 'basic'},
-            {projection: new OpenLayers.Projection('4362')},
-            { buffer:2, gutter: '1', isBaseLayer: 'True' },
-            {zoomOffset: 9, resolutions: [128,64,32,16,8,4,2,1,0]}
+            {layers: 'shape'},
+            @*{projection: new OpenLayers.Projection('4326')},*@
+            @*{ buffer:2, gutter: '1', isBaseLayer: 'True' },*@
+            @*{zoomOffset: 9, resolutions: [1024,512,256,128,64,32,16,8,4,2]}*@
+            {wrapDateLine: true}
         );
 
         map.addLayer(layer);
-        map.setCenter(new OpenLayers.LonLat(lon, lat), zoom);
+        @*map.setCenter(new OpenLayers.LonLat(lon, lat), zoom);*@
         map.zoomToMaxExtent();
         }
     </script>

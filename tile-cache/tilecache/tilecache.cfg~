@@ -88,8 +88,15 @@ base=../public/images/tiles/
 # metatile=yes
 
 
-[basic]
-type=WMS
-url=http://labs.metacarta.com/wms/vmap0
-extension=png
+#[basic]
+#type=WMS
+#url=http://labs.metacarta.com/wms/vmap0
+#url=http://localhost:9002
+#extension=png
 
+[shape]
+type=WMS
+url=http://localhost:9002
+extension=png
+layers=shape
+bbox=-180.0,-90.0,180.0,90.0

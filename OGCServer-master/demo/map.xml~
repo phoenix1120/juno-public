@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map srs="+init=epsg:3857" background-color="steelblue">
+
+    <Style name="style">
+        <Rule>
+            <PolygonSymbolizer fill="steelblue" />
+            <LineSymbolizer stroke="grey" stroke-width=".2" />
+        </Rule>
+    </Style>
+
+    <Layer name="shape" srs="+init=epsg:3857">
+        <StyleName>style</StyleName>
+        <Datasource>
+            <Parameter name="host">localhost</Parameter>
+            <Parameter name="user">postgres</Parameter>
+            <Parameter name="password">shotfirst</Parameter>
+            <Parameter name="dbname">falcon</Parameter>
+            <Parameter name="table">world</Parameter>
+            <Parameter name="type">postgis</Parameter>
+        </Datasource>
+    </Layer>
+
+</Map>
