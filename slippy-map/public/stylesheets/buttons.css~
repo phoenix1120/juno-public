@@ -1,0 +1,29 @@
+.btn {
+	-moz-box-shadow:inset -4px 4px 17px 0px #15ff00;
+	-webkit-box-shadow:inset -4px 4px 17px 0px #15ff00;
+	box-shadow:inset -4px 4px 17px 0px #15ff00;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #000000), color-stop(1, #ffffff) );
+	background:-moz-linear-gradient( center top, #4be000 5%, #084f00 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#4be000', endColorstr='#084f00');
+	background-color:#4be000;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:42px;
+	border:5px solid #0f3d00;
+	display:inline-block;
+	color:#c5fccb;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	padding:6px 12px;
+	text-decoration:none;
+	text-shadow:-2px 2px 4px #000000;
+}.btn:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #084f00), color-stop(1, #4be000) );
+	background:-moz-linear-gradient( center top, #084f00 5%, #4be000 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#084f00', endColorstr='#4be000');
+	background-color:#084f00;
+}.btn:active {
+	position:relative;
+	top:1px;
+}

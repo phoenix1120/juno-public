@@ -4,7 +4,8 @@
 #slippyMap{
     margin: auto;
     margin-top: 10px;
-    border: ridge 2px;
-    height: 480px;
-    width: 690px;
+    border: groove 8px;
+    border-color: green;
+    height: 512px;
+    width: 1024px;
 }

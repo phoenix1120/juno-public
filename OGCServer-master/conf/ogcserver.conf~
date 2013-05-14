@@ -6,7 +6,7 @@
 #          details.
 # This would be the name of the map_factory file (without extension .py)
 
-module=CHANGEME
+module=./map_factory.py
 
 # service: This section contains service level metadata.
 

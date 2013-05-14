@@ -1,0 +1,49 @@
+body
+{
+	margin: 0px;
+	padding: 0px;
+	background-color: #111111;
+}
+
+/* top, header image area style */
+#header_outterBorder
+{
+	text-align: center;
+	background: #330044;
+}
+#header
+{
+	width: auto;
+	height: 55px;
+	margin: auto;
+}
+#header_img
+{
+	float: left;
+	margin: 5px;
+}
+#group_img
+{
+	float: left;
+	margin-top: 5px;
+}
+
+/* content area style */
+#content_main
+{
+	margin-top: 5px;
+	text-algin: left
+	margin-bottom: 5px;
+	margin: 5px;
+}
+.content_wrapper
+{
+	/*width: 895px;*/
+	width: auto;
+	margin: 5px;
+}
+.button
+{
+	width: 200px;
+	height: 40px;
+}

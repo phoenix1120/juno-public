@@ -7,7 +7,7 @@ class WMSFactory(BaseWMSFactory):
         import sys
         base_path, tail = os.path.split(__file__)
         configpath = os.path.join(base_path, 'ogcserver.conf')
-        file_path = os.path.join(base_path, 'mapfile.xml') 
+        file_path = os.path.join(base_path, 'map.xml') 
         BaseWMSFactory.__init__(self, configpath=configpath)
         self.loadXML(file_path)
         self.finalize()

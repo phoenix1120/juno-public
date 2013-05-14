@@ -4,94 +4,298 @@
 
 <html>
 <head>
-    <title>@title</title>
-    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-    <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+	<title>@title</title>
+	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+	<script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
 
 
-    <style type="text/css">
-    html, body, #slippyMap {
-    width: 100;
-    height: 100;
-    margin: 0;
-    }
-    </style>
-    <script type="text/javascript" src="http://localhost:9000/assets/OpenLayers-2.12/OpenLayers.js"></script>
-    @*<script src="http://www.openlayers.org/api/OpenLayers.js"></script>*@
-    <script>
-        @*
-        function init() {
+	@*<style type="text/css">
+	html, body, #slippyMap {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	}
+	</style>*@
+	<script type="text/javascript" src="http://localhost:9000/assets/OpenLayers-2.12/OpenLayers.js"></script>
+	@*<script src="http://www.openlayers.org/api/OpenLayers.js"></script>*@
+	<script>
+		@*
+		function init() {
 
-        var options = {
-        controls: [
-        new OpenLayers.Control.Navigation(),
-        new OpenLayers.Control.PanZoomBar(),
-        ]
-        };
+		var options = {
+		controls: [
+		new OpenLayers.Control.Navigation(),
+		new OpenLayers.Control.PanZoomBar(),
+		]
+		};
 
-        map = new OpenLayers.Map("slippyMap", options);
+		map = new OpenLayers.Map("slippyMap", options);
 
-        var newLayer = new OpenLayers.Layer.OSM(
-        "New Layer",
-        "http://localhost:8080/1.0.0/basic/0/0/0.png",
-        {zoomOffset: 9, resolutions: [128,64,32,16,8,4,2,1,0]}
-        );
+		var newLayer = new OpenLayers.Layer.OSM(
+		"New Layer",
+		"http://localhost:8080/1.0.0/basic/0/0/0.png",
+		{zoomOffset: 9, resolutions: [128,64,32,16,8,4,2,1,0]}
+		);
 
-        map.addLayer(newLayer);
-        map.setCenter(new OpenLayers.LonLat(-1.25,51.75).transform(fromProjection,toProjection), 0);
-        }*@
+		map.addLayer(newLayer);
+		map.setCenter(new OpenLayers.LonLat(-1.25,51.75).transform(fromProjection,toProjection), 0);
+		}*@
 
-        var lon = 5;
-        var lat = 40;
-        var zoom = 5;
-        var map, layer;
-        @*var fromProjection = new OpenLayers.Projection("EPSG:4326"); // transform from WGS 1984*@
-        @*var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection*@
-        @*var toProjection = new OpenLayers.Projection("EPSG:4326"); // to Spherical Mercator Projection*@
-        var extent = new OpenLayers.Bounds(-180,-90,180,90);@*.transform(fromProjection,toProjection);*@
+		var borderColorNotActive = "#0f3d00";
+		var borderColorActive = "#00ff00";
+		var textColorNotActive = "#005500";
+		var textColorActive = "#c5fccb";
 
-        function init(){
-        var options = {
-            restrictedExtent: extent,
-            numZoomLevels: 5,
-            controls: [
-            new OpenLayers.Control.Navigation(),
-            new OpenLayers.Control.PanZoomBar(),
-            new OpenLayers.Control.LayerSwitcher({'ascending':false}),
-            new OpenLayers.Control.MousePosition(),
-            new OpenLayers.Control.OverviewMap()
-            ]
-        };
+		var lon = 5;
+		var lat = 40;
+		var zoom = 5;
+		var map, layer, z, drawControls;
+		@*var fromProjection = new OpenLayers.Projection("EPSG:4326"); // transform from WGS 1984*@
+		@*var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection*@
+		@*var toProjection = new OpenLayers.Projection("EPSG:4326"); // to Spherical Mercator Projection*@
+		var extent = new OpenLayers.Bounds(-180,-90,180,90);@*.transform(fromProjection,toProjection);*@
+		function init(){
+			var options = {
+				restrictedExtent: extent,
+				numZoomLevels: 15,
+				@*maxResolution: extent,*@
+				@*controls: [
+				new OpenLayers.Control.Navigation(),
+				new OpenLayers.Control.PanZoomBar(),
+				new OpenLayers.Control.LayerSwitcher({'ascending':false}),
+				new OpenLayers.Control.MousePosition(),
+				new OpenLayers.Control.OverviewMap()
+				]*@
+			};
 
-        map = new OpenLayers.Map('slippyMap', options);
-        layer = new OpenLayers.Layer.WMS(
-            "OpenLayers WMS",
-            "http://localhost:8080/",
-            {layers: 'shape'},
-            @*{projection: new OpenLayers.Projection('4326')},*@
-            @*{ buffer:2, gutter: '1', isBaseLayer: 'True' },*@
-            @*{zoomOffset: 9, resolutions: [1024,512,256,128,64,32,16,8,4,2]}*@
-            {wrapDateLine: true}
-        );
+			map = new OpenLayers.Map('slippyMap', options);
+			layer = new OpenLayers.Layer.WMS(
+				"The World",
+				"http://localhost:8080/",
+				{layers: 'shape'},
+				@*{projection: new OpenLayers.Projection('4326')},*@
+				@*{buffer:2, gutter: '1', isBaseLayer: 'True' },*@
+				@*{zoomOffset: 0, resolutions: [1.40625,0.703125,0.3515625,0.17578125,0.087890625,0.0439453125,0.021972656,0.010986328,0.005493164,0.002746582]},*@
+				{singeTile: true, transitionEffect: 'resize', wrapDateLine: true}
+			);
 
-        map.addLayer(layer);
-        @*map.setCenter(new OpenLayers.LonLat(lon, lat), zoom);*@
-        map.zoomToMaxExtent();
-        }
-    </script>
+			osm = new OpenLayers.Layer.OSM("Simple OSM Map");
+
+			us = new OpenLayers.Layer.WMS(
+				"US Congressional Districts 111",
+				"http://localhost:8080/",
+				{layers: 'us'},
+				{projection: new OpenLayers.Projection('4326')},
+				@*{buffer:2, gutter: '1', isBaseLayer: 'True' },*@
+				@*{zoomOffset: 0, resolutions: [1.40625,0.703125,0.3515625,0.17578125,0.087890625,0.0439453125,0.021972656,0.010986328,0.005493164,0.002746582]},*@
+				{singeTile: true, transitionEffect: 'resize', wrapDateLine: true}
+			);
+
+			map.addLayers([layer, osm, us]);
+
+			var my_style = new OpenLayers.StyleMap({
+				"default": new OpenLayers.Style(
+				{
+					pointRadius: 4,
+					strokeColor: "#00ff00",
+					fillColor: "#005500",
+					fillOpacity: 0.6,
+					strokeWidth: 2,
+					//label: "${name}",
+					fontColor: "blue",
+					fontSize: 10,
+					fontFamily: "Arial",
+					fontWeight: "bold"
+				})
+			});
+
+			var pointLayer = new OpenLayers.Layer.Vector("Point Layer",
+				{projection: new OpenLayers.Projection('4326')},
+				{
+					isBaseLayer: false,
+					styleMap: my_style,
+					rendererOptions: {zIndexing: true},
+					extractAttributes: true
+				});
+			var lineLayer = new OpenLayers.Layer.Vector("Line Layer",
+				{projection: new OpenLayers.Projection('4326')},
+				{
+					isBaseLayer: false,
+					styleMap: my_style,
+					rendererOptions: {zIndexing: true},
+					extractAttributes: true
+				});
+			var polygonLayer = new OpenLayers.Layer.Vector("Polygon Layer",
+				{projection: new OpenLayers.Projection('4326')},
+				{
+					isBaseLayer: false,
+					styleMap: my_style,
+					rendererOptions: {zIndexing: true},
+					extractAttributes: true
+				});
+			var boxLayer = new OpenLayers.Layer.Vector("Box layer",
+				{projection: new OpenLayers.Projection('4326')},
+				{
+					isBaseLayer: false,
+					styleMap: my_style,
+					rendererOptions: {zIndexing: true},
+					extractAttributes: true
+				});
+
+			map.addLayers([pointLayer, lineLayer, polygonLayer, boxLayer]);
+
+			drawControls = {
+				point: new OpenLayers.Control.DrawFeature(pointLayer,
+					OpenLayers.Handler.Point),
+				line: new OpenLayers.Control.DrawFeature(lineLayer,
+					OpenLayers.Handler.Path),
+				polygon: new OpenLayers.Control.DrawFeature(polygonLayer,
+					OpenLayers.Handler.Polygon),
+				box: new OpenLayers.Control.DrawFeature(boxLayer,
+					OpenLayers.Handler.RegularPolygon, {
+						handlerOptions: {
+							sides: 4,
+							irregular: true
+						}
+					}
+				)
+			};
+
+			for(var key in drawControls) {
+				map.addControl(drawControls[key]);
+			}
+
+			map.addControl(new OpenLayers.Control.LayerSwitcher());
+			map.addControl(new OpenLayers.Control.MousePosition());
+			map.addControl(new OpenLayers.Control.Navigation({dragPanOptions: {enableKinetic: true}}));
+			map.zoomToMaxExtent();
+		}
+
+		function toggleRestrictedExtent(element) {
+			if(map.restrictedExtent == null) {
+				map.setOptions({restrictedExtent: extent});
+
+				element.style.color = textColorNotActive;
+				@*element.style.backgroundColor = "#550000";*@
+				@*element.style.border = "";*@
+				element.style.borderColor = borderColorNotActive;
+				@*element.style.textDecoration = "line-through";*@
+			} else {
+				map.setOptions({restrictedExtent: null});
+
+				element.style.color = textColorActive;
+				@*element.style.backgroundColor = "#005500";*@
+				@*element.style.border = "groove";*@
+				element.style.borderColor = borderColorActive;
+				@*element.style.textDecoration = "";*@
+			}
+		}
+
+		function toggleControl(element) {
+			if(element.name == "none") {
+				document.getElementById(element.name + "Toggle").style.color = textColorActive;
+				document.getElementById(element.name + "Toggle").style.backgroundColor = "#005500";
+				@*document.getElementById(element.name + "Toggle").style.border = "groove";*@
+				document.getElementById(element.name + "Toggle").style.borderColor = borderColorActive;
+			} else {
+				document.getElementById("none" + "Toggle").style.color = textColorNotActive;
+				document.getElementById("none" + "Toggle").style.backgroundColor = "#550000";
+				@*document.getElementById("none" + "Toggle").style.border = "";*@
+				document.getElementById("none" + "Toggle").style.borderColor = borderColorNotActive;
+			}
+			if(element.name=="box"){
+				allowPan(document.getElementById("allowPanCheckbox"));
+			} else if(document.getElementById("allowPanCheckbox").checked == true){
+				allowPan(document.getElementById("allowPanCheckbox"));
+			}
+			for(key in drawControls) {
+				var control = drawControls[key];
+
+				if(element.name == key){
+					control.activate();
+
+					document.getElementById(key + "Toggle").style.color = textColorActive;
+					document.getElementById(key + "Toggle").style.backgroundColor = "#005500";
+					@*document.getElementById(key + "Toggle").style.border = "groove";*@
+					document.getElementById(key + "Toggle").style.borderColor = borderColorActive;
+				} else {
+					control.deactivate();
+
+					document.getElementById(key + "Toggle").style.color = textColorNotActive;
+					document.getElementById(key + "Toggle").style.backgroundColor = "#550000";
+					@*document.getElementById(key + "Toggle").style.border = "";*@
+					document.getElementById(key + "Toggle").style.borderColor = borderColorNotActive;
+				}
+		}
+
+		}
+
+		function allowPan(element) {
+			var stop = !element.checked;
+			var n = element.name;
+			for(var key in drawControls) {
+				drawControls[key].handler.stopDown = stop;
+				drawControls[key].handler.stopUp = stop;
+			}
+			if(stop==false){
+				element.style.color = textColorActive;
+				element.style.backgroundColor = "#005500";
+				@*element.style.border = "groove";*@
+				element.style.borderColor = borderColorActive;
+			} else if(stop==true){
+				element.style.color = textColorNotActive;
+				element.style.backgroundColor = "#550000";
+				@*element.style.border = "";*@
+				element.style.borderColor = borderColorNotActive;
+			}
+			element.checked = stop;
+
+		}
+
+		function setActivity(element, activity) {
+			element = document.getElementById(element);
+			if(activity == "activate"){
+				element.style.color = textColorActive;
+				element.style.borderColor = borderColorActive;
+			} else if(activity == "deactivate"){
+				element.style.color = textColorNotActive;
+				element.style.borderColor = borderColorNotActive;
+			}
+		}
+	</script>
 
 </head>
 <body onload="init();">
 <div id="header_outterBorder">
-    <div id="header">
-        <img id="header_img" alt="Header Missing" src="@routes.Assets.at("images/header.png")">
-    </div>
+	<div id="header">
+		<img id="header_img" alt="Header Missing" src="@routes.Assets.at("images/team.png")">
+		<img id="group_img" alt="Header Missing" src="@routes.Assets.at("images/group.png")">
+	</div>
 </div>
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/buttons.css")">
 <div id="content_main">
-    <div class="content_wrapper">
-        @content
-    </div>
+	<button class="btn" value="Allow world wrapping" id="worldWrap" onclick="toggleRestrictedExtent(this)" >Allow world wrapping</button>
+
+<button class="btn" name="none" value="Navigate" id="noneToggle" onclick="toggleControl(this);" style="border-color:'borderColorActive';color:#c5fccb">Navigate</button>
+<button class="btn" name="point" value="Draw Point" id="pointToggle" onclick="toggleControl(this);" style="border-color:#0f3d00;color:#ff0000">Draw Point</button>
+<button class="btn" name="line" value="Draw Line" id="lineToggle" onclick="toggleControl(this);" style="border-color:#0f3d00;color:#ff0000">Draw Line</button>
+<button class="btn" name="polygon" value="Draw Polygon" id="polygonToggle" onclick="toggleControl(this);" style="border-color:#0f3d00;color:#ff0000">Draw Polygon</button>
+<button class="btn" name="box" value="Draw Box" id="boxToggle" onclick="toggleControl(this);" style="border-color:#0f3d00;color:#ff0000">Draw Box</button>
+<button class="btn" name="allow-pan" value="Allow pan while drawing" id="allowPanCheckbox" onclick="allowPan(this);" style="border-color:#00ff00;color:#c5fccb">Allow pan while drawing</button>
+
+	<!--<input type="button" value="Allow world wrapping" id="worldWrap2" onclick="toggleRestrictedExtent(this);" style="border-color:#ff0000;color:#ff0000;background-color:#550000;text-decoration:line-through"/>
+
+	<input type="button" name="none" value="Navigate" id="noneToggle" onclick="toggleControl(this);" style="border-color:#00ff00;color:#00ff00;background-color:#005500"/>
+	<input type="button" name="point" value="Draw Point" id="pointToggle" onclick="toggleControl(this);" style="border-color:#ff0000;color:#ff0000;background-color:#550000"/>
+	<input type="button" name="line" value="Draw Line" id="lineToggle" onclick="toggleControl(this);" style="border-color:#ff0000;color:#ff0000;background-color:#550000"/>
+	<input type="button" name="polygon" value="Draw Polygon" id="polygonToggle" onclick="toggleControl(this);" style="border-color:#ff0000;color:#ff0000;background-color:#550000"/>
+	<input type="button" name="box" value="Draw Box" id="boxToggle" onclick="toggleControl(this);" style="border-color:#ff0000;color:#ff0000;background-color:#550000"/>
+	<input type="button" name="allow-pan" value="Allow pan while drawing" id="allowPanCheckbox" onclick="allowPan(this);" style="border-color:#00ff00;color:#00ff00;background-color:#005500"/>
+-->
+</div>
+<div class="content_wrapper">
+	@content
 </div>
 </body>
 </html>
