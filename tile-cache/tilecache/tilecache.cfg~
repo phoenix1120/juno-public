@@ -88,11 +88,11 @@ base=../public/images/tiles/
 # metatile=yes
 
 
-#[basic]
-#type=WMS
-#url=http://labs.metacarta.com/wms/vmap0
-#url=http://localhost:9002
-#extension=png
+[meta]
+type=WMS
+url=http://labs.metacarta.com/wms/vmap0
+layers=basic
+extension=png
 
 [shape]
 type=WMS
@@ -101,16 +101,21 @@ extension=png
 layers=shape
 #bbox=-180.0,-90.0,180.0,90.0
 
-[indian]
-type=WMS
-url=http://localhost:9002
-extension=png
-layers=indian
-#bbox=-180.0,-90.0,180.0,90.0
-
 [us]
 type=WMS
 url=http://localhost:9002
 extension=png
 layers=us
 #bbox=-180.0,-90.0,180.0,90.0
+
+[osgeo]
+type=WMS
+url=http://vmap0.tiles.osgeo.org/wms/vmap0?
+layers=basic
+extention=png
+
+[nasa]
+type=WMS
+url=http://wms.jpl.nasa.gov/wms.cgi
+layers=modis,global_mosaic
+extention=jpeg

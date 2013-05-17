@@ -2,48 +2,82 @@ body
 {
 	margin: 0px;
 	padding: 0px;
-	background-color: #111111;
+	background-color: #222222;
 }
 
 /* top, header image area style */
 #header_outterBorder
 {
 	text-align: center;
-	background: #330044;
+	background: #111111;
 }
 #header
 {
 	width: auto;
-	height: 55px;
+	height: 65px;
 	margin: auto;
 }
 #header_img
 {
 	float: left;
 	margin: 5px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	border: solid 5px;
+	border-color: #00dd00;
 }
 #group_img
 {
 	float: left;
 	margin-top: 5px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	border: solid 5px;
+	border-color: #00bb00;
+}
 }
 
 /* content area style */
 #content_main
 {
+	text-align: center;
+	background: #00ff00;
+	width: auto;
+	height: 65px;
 	margin-top: 5px;
-	text-algin: left
 	margin-bottom: 5px;
 	margin: 5px;
+	background: #444444;
 }
 .content_wrapper
 {
-	/*width: 895px;*/
+	margin-top: 5px;
+	margin-left: 5px;
+	float: left;
 	width: auto;
-	margin: 5px;
+	background: #444444;
+	border: ridge 10px;
+    	border-color: #00cc00;
+}
+.button_wrapper
+{	
+	float: left;
+	width: auto;
+    	height: 508px;
+	margin-top: 5px;
+	margin-left: 5px;
+	padding: 2px;
+	background: #333333;
+	border: ridge 10px;
+    	border-color: #00cc00;
 }
 .button
 {
 	width: 200px;
 	height: 40px;
+}
+.olControlLayerSwitcher .layersDiv { 
+    background-color: #005500!important; 
 }

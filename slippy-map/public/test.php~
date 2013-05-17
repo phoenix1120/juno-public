@@ -1,0 +1,4 @@
+<h3>Executing /assets/test.sh</h3>
+<?
+exec('/assets/test.sh');
+?>

@@ -1,11 +1,8 @@
 #slippyMapWrapper{
-    text-align: center;
+	text-align: center;
 }
 #slippyMap{
-    margin: auto;
-    margin-top: 10px;
-    border: ridge 8px;
-    border-color: green;
-    height: 512px;
-    width: 1024px;
+	border: 5px inset #00ff00;
+	height: 512px;
+	width: 1024px;
 }
