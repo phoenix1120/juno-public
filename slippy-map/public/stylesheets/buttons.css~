@@ -153,9 +153,9 @@
         display:inline-block;
         color:#ddffdd;
         font-family:Arial;
-        font-size:14px;
+        font-size:12px;
         font-weight:bold;
-        padding:6px 8px;
+        padding:6px 6px;
         text-decoration:none;
         
         text-shadow:0px 1px 5px #002200;
@@ -186,11 +186,11 @@
         display:inline-block;
         color:#a6a6a6;
         font-family:Arial;
-        font-size:14px;
+        font-size:12px;
         font-weight:bold;
-        padding:6px 8px;
+        padding:6px 6px;
         text-decoration:none;
         
         text-shadow:-1px 1px 6px #000000;
-        visibility:hidden;
+        
 }

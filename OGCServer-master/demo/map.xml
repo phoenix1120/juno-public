@@ -10,8 +10,8 @@
     
     <Style name="style2">
         <Rule>
-            <PolygonSymbolizer fill="darkgreen" />
-            <LineSymbolizer stroke="green" stroke-width="1" />
+            <PolygonSymbolizer fill="lightblue" />
+            <LineSymbolizer stroke="darkblue" stroke-width="1" />
         </Rule>
     </Style>
 

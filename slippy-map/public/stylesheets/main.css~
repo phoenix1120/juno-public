@@ -64,7 +64,7 @@ body
 .button_wrapper
 {	
 	float: left;
-	width: auto;
+	width: 200px;
     	height: 508px;
 	margin-top: 5px;
 	margin-left: 5px;

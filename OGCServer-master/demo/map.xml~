@@ -10,8 +10,8 @@
     
     <Style name="style2">
         <Rule>
-            <PolygonSymbolizer fill="darkgreen" />
-            <LineSymbolizer stroke="green" stroke-width="1" />
+            <PolygonSymbolizer fill="blue" />
+            <LineSymbolizer stroke="darkblue" stroke-width="1" />
         </Rule>
     </Style>
 
@@ -27,14 +27,14 @@
         </Datasource>
     </Layer>
     
-    <Layer name="us" srs="+init=epsg:4326">
+    <Layer name="custom" srs="+init=epsg:4326">
         <StyleName>style2</StyleName>
         <Datasource>
             <Parameter name="host">localhost</Parameter>
             <Parameter name="user">postgres</Parameter>
             <Parameter name="password">shotfirst</Parameter>
             <Parameter name="dbname">falcon</Parameter>
-            <Parameter name="table">us</Parameter>
+            <Parameter name="table">custom</Parameter>
             <Parameter name="type">postgis</Parameter>
         </Datasource>
     </Layer>
