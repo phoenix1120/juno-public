@@ -48,7 +48,7 @@ object SlippyMap extends Controller {
   def getHelloWorldPostFromTileCache: String = {
     val postHwUrl = tileCacheBaseUrl + "helloworldPost"
 
-    val postJson = Map("helloWorld" -> "this is my hello world value")
+    val postJson = Map("helloWorld" -> "Hello? Is anyone out there?")
     WebRequest.postJson(postHwUrl, Json.toJson(postJson))
   }
 }

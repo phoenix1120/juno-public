@@ -19,7 +19,7 @@ object TileCache extends Controller{
    */
   def getHelloWorld  = Action {
     println("Processing request for  getHelloWorld")
-    Ok("HelloWorld")
+    Ok("Hello? This is Tilecache speaking.")
   }
 
   /**
@@ -36,7 +36,7 @@ object TileCache extends Controller{
     }
     else {
       try {
-        val jsonResponse = Map("helloWorldResponse" -> hwData.get)
+        val jsonResponse = Map("Tilecache" -> hwData.get)
 
         Ok(toJson(jsonResponse))
       }
@@ -49,7 +49,7 @@ object TileCache extends Controller{
   }
 
   /**
-   * Handles the request for a tile cache tile
+   * Handles the request for a tile cache tile...or it used to. We implemented it differently so this function is a proof of concept.
    * @param path
    * @param file
    * @return

@@ -3,98 +3,60 @@
 <!DOCTYPE html>
 
 <html>
-	<? include('test.php'); ?>
 <head>
 	<title>@title</title>
 	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
 	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/buttons.css")">
 	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
 	<script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
-
-
-	@*<style type="text/css">
-	html, body, #slippyMap {
-	width: 100%;
-	height: 100%;
-	padding: 5;
-	}
-	</style>*@
 	<script type="text/javascript" src="http://localhost:9000/assets/OpenLayers-2.12/OpenLayers.js"></script>
-	@*<script src="http://www.openlayers.org/api/OpenLayers.js"></script>*@
 	<script>
-		@*
-		function init() {
+		@*drawControls is used for the draw controls. If you want to use them, uncomment this variable.*@
+		var map@*, drawControls*@;
 
-		var options = {
-		controls: [
-		new OpenLayers.Control.Navigation(),
-		new OpenLayers.Control.PanZoomBar(),
-		]
-		};
+		@*This is used to restrict the user to keep them from viewing the outside of the map. Change these values to match the size of your map.*@
+		var extent = new OpenLayers.Bounds(-180,-90,180,90);
 
-		map = new OpenLayers.Map("slippyMap", options);
-
-		var newLayer = new OpenLayers.Layer.OSM(
-		"New Layer",
-		"http://localhost:8080/1.0.0/basic/0/0/0.png",
-		{zoomOffset: 9, resolutions: [128,64,32,16,8,4,2,1,0]}
-		);
-
-		map.addLayer(newLayer);
-		map.setCenter(new OpenLayers.LonLat(-1.25,51.75).transform(fromProjection,toProjection), 0);
-		}*@
-
-		var borderColorNotActive = "#004400";
-		var borderColorActive = "#00ff00";
-		var textColorNotActive = "#88aa88";
-		var textColorActive = "#ddffdd";
-
-		var lon = 5;
-		var lat = 40;
-		var zoom = 5;
-		var map, drawControls;
-		@*var fromProjection = new OpenLayers.Projection("EPSG:4326"); // transform from WGS 1984*@
-		@*var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection*@
-		@*var toProjection = new OpenLayers.Projection("EPSG:4326"); // to Spherical Mercator Projection*@
-		var extent = new OpenLayers.Bounds(-180,-90,180,90);@*.transform(fromProjection,toProjection);*@
 		function init(){
+			@*These are the options for the openlayers map. Change as you see fit.*@
 			var options = {
 				restrictedExtent: extent,
 				numZoomLevels: 15,
-				@*maxResolution: extent,*@
 				controls: [
-				new OpenLayers.Control.Navigation({dragPanOptions: {enableKinetic: true}}),
-				new OpenLayers.Control.PanZoom(),
-				@*new OpenLayers.Control.MousePosition(),*@
+					new OpenLayers.Control.Navigation({dragPanOptions: {enableKinetic: true}}),@*This option is to enable momentum when scrolling the map.*@
+					new OpenLayers.Control.PanZoom(),
 				]
 			};
 
+			@*Creates the openlayers map.*@
 			map = new OpenLayers.Map('slippyMap', options);
+
+			@*These are the map layers. Comment out any that you don't want to use.*@
+
+			@*This layer if for use with data that is already loaded into the database.*@
 			var world = new OpenLayers.Layer.WMS(
 				"The World",
 				"http://localhost:8080/",
 				{layers: 'shape'},
-				@*{projection: new OpenLayers.Projection("EPSG:4326")},*@
-				@*{buffer:2, gutter: '1', isBaseLayer: 'True' },*@
-				@*{zoomOffset: 0, resolutions: [1.40625,0.703125,0.3515625,0.17578125,0.087890625,0.0439453125,0.021972656,0.010986328,0.005493164,0.002746582]},*@
 				{singeTile: true, transitionEffect: 'resize', wrapDateLine: true}
 			);
 
+			@*This layer if for use with custom data that can be created with Quantum GIS.*@
+			var custom = new OpenLayers.Layer.WMS(
+			"Custom Map Tile",
+			"http://localhost:8080/",
+			{layers: 'custom'}
+			);
+
+			@*This layer is pulling tiles from a remote server, but the tiles are being cached locally.*@
 			var osgeo = new OpenLayers.Layer.WMS(
 				"osgeo map",
 				"http://localhost:8080/",
 				{layers: 'osgeo'},
-				@*{projection: new OpenLayers.Projection("EPSG:4326")},*@
 				{singeTile: true, transitionEffect: 'resize', wrapDateLine: true}
 			);
 
-			var custom = new OpenLayers.Layer.WMS(
-				"Custom Map Tile",
-				"http://localhost:8080/",
-				{layers: 'custom'}
-				@*{projection: new OpenLayers.Projection("EPSG:4326")},*@
-			);
-
+			@*These last two layers are from OpenStreetMap and are not being cached locally.*@
 			var ocm = new OpenLayers.Layer.OSM(
 				"OpenCycleMap",
 				["http://a.tile.opencyclemap.org/cycle/${z}/${x}/${y}.png",
@@ -104,9 +66,13 @@
 
 			var osm = new OpenLayers.Layer.OSM();
 
-			map.addLayers([world, osgeo, custom, ocm, osm]);
+			@*If you comment out or remove any of the above layers, make sure to remove them from here as well.*@
+			map.addLayers([world, custom, osgeo, ocm, osm]);
 
-			var my_style = new OpenLayers.StyleMap({
+			@*This section of code is used to create drawing controls for openlayers.*@
+
+			@*This defines the style for the drawn elements created with the drawing controls.*@
+			@*var my_style = new OpenLayers.StyleMap({
 				"default": new OpenLayers.Style(
 				{
 					pointRadius: 6,
@@ -114,16 +80,15 @@
 					fillColor: "#aa0000",
 					fillOpacity: 0.5,
 					strokeWidth: 3,
-					//label: "${name}",
 					fontColor: "blue",
 					fontSize: 10,
 					fontFamily: "Arial",
 					fontWeight: "bold"
 				})
-			});
+			});*@
 
-			var pointLayer = new OpenLayers.Layer.Vector("Point Layer",
-				@*{projection: new OpenLayers.Projection("ESPG:4326")},*@
+			@*These layers are for the corresponding draw controls, so that each controls drawings are in a different layer.*@
+			@*var pointLayer = new OpenLayers.Layer.Vector("Point Layer",
 				{
 					isBaseLayer: false,
 					styleMap: my_style,
@@ -131,7 +96,6 @@
 					extractAttributes: true
 				});
 			var lineLayer = new OpenLayers.Layer.Vector("Line Layer",
-				@*{projection: new OpenLayers.Projection("ESPG:4326")},*@
 				{
 					isBaseLayer: false,
 					styleMap: my_style,
@@ -139,7 +103,6 @@
 					extractAttributes: true
 				});
 			var polygonLayer = new OpenLayers.Layer.Vector("Polygon Layer",
-				@*{projection: new OpenLayers.Projection("ESPG:4326")},*@
 				{
 					isBaseLayer: false,
 					styleMap: my_style,
@@ -147,28 +110,31 @@
 					extractAttributes: true
 				});
 			var boxLayer = new OpenLayers.Layer.Vector("Box layer",
-				@*{projection: new OpenLayers.Projection("ESPG:4326")},*@
 				{
 					isBaseLayer: false,
 					styleMap: my_style,
 					rendererOptions: {zIndexing: true},
 					extractAttributes: true
-				});
+				});*@
 
-			var renderer = OpenLayers.Util.getParameters(window.location.href).renderer;
-			renderer = (renderer) ? [renderer] : OpenLayers.Layer.Vector.prototype.renderers;
+			@*Here is the renderer for the draw controls. It renders the drawn elements.*@
+			@*var renderer = OpenLayers.Util.getParameters(window.location.href).renderer;
+			renderer = (renderer) ? [renderer] : OpenLayers.Layer.Vector.prototype.renderers;*@
 
-			vectors = new OpenLayers.Layer.Vector("Vector Layer", {
+			@*This makes the drawing stuff work*@
+			@*vectors = new OpenLayers.Layer.Vector("Vector Layer", {
 				renderers: renderer,
 				isBaseLayer: false,
 				styleMap: my_style,
 				rendererOptions: {zIndexing: true},
 				extractAttributes: true
-			});
+			});*@
 
-			map.addLayers([pointLayer, lineLayer, polygonLayer, boxLayer, vectors]);
+			@*Add the drawing layers to the map*@
+			@*map.addLayers([pointLayer, lineLayer, polygonLayer, boxLayer, vectors]);*@
 
-			drawControls = {
+			@*Creates an opject that stores all the draw controls.*@
+			@*drawControls = {
 				point: new OpenLayers.Control.DrawFeature(vectors,
 					OpenLayers.Handler.Point),
 				line: new OpenLayers.Control.DrawFeature(vectors,
@@ -184,75 +150,41 @@
 					}
 				),
 				drag: new OpenLayers.Control.DragFeature(vectors)
-			};
+			};*@
 
-			for(var key in drawControls) {
-				@*if(!(key == "box" || key == "drag")){
-					drawControls[key].handler.stopDown = true;
-					drawControls[key].handler.stopUp = true;
-				}*@
+			@*Adds all the controls to the map.*@
+			@*for(var key in drawControls) {
 				map.addControl(drawControls[key]);
-			}
+			}*@
 
+			@*Final steps to setup the map. These can be changed *@
 			map.addControl(new OpenLayers.Control.LayerSwitcher({ roundedCornerColor:'#005500'}));
-			@*map.addControl(new OpenLayers.Control.MousePosition());*@
-			@*map.addControl(new OpenLayers.Control.Navigation({dragPanOptions: {enableKinetic: true}}));*@
-			@*map.addControl(new OpenLayers.Control.PanZoom());*@
 			map.zoomToMaxExtent();
-			@*document.getElementById("pointToggle").click();*@
-			@*setActivity(document.getElementById("pointToggle"), "activate");*@
-			@*document.getElementById("pan").classList.remove('.btn');*@
 			map.events.register('changelayer', null, function(){
 				map.zoomToMaxExtent();
 				}
 			);
-			document.getElementById("worldWrap").click();
 		}
 
+		@*These function are used to control the buttons and their functions. The sections that are comment out are for the draw controls.*@
 		function toggleRestrictedExtent(element) {
 			if(map.restrictedExtent != extent) {
 				map.setOptions({restrictedExtent: extent});
-
-				@*element.style.color = textColorNotActive;*@
-				@*element.style.backgroundColor = "#550000";*@
-				@*element.style.border = "";*@
-				@*element.style.borderColor = borderColorNotActive;*@
-				@*element.style.textDecoration = "line-through";*@
 				element.classList.remove('selected');
 			} else {
-				@*var extendedExtent = new OpenLayers.Bounds(-18000000,-90,18000000,90);*@
-				@*map.setOptions({restrictedExtent: extendedExtent});*@
 				map.setOptions({restrictedExtent: null});
-
-				@*element.style.color = textColorActive;*@
-				@*element.style.backgroundColor = "#005500";*@
-				@*element.style.border = "groove";*@
-				@*element.style.borderColor = borderColorActive;*@
-				@*element.style.textDecoration = "";*@
 				element.classList.add('selected');
 			}
 		}
 
-		function toggleControl(element) {
+		@*function toggleControl(element) {
 			if(element.name == "draw") {
 				if(element.classList.contains('selected')){
 					document.getElementById(element.name + "Toggle").classList.remove('selected');
 				} else {
 					document.getElementById(element.name + "Toggle").classList.add('selected');
 				}
-				@*document.getElementById(element.name + "Toggle").style.color = textColorActive;*@
-				@*document.getElementById(element.name + "Toggle").style.backgroundColor = "#005500";*@
-				@*document.getElementById(element.name + "Toggle").style.border = "groove";*@
-				@*document.getElementById(element.name + "Toggle").style.borderColor = borderColorActive;*@
-			} @*else if(!element.classList.contains('disabled')){
-				document.getElementById("noneToggle").classList.remove('selected');
-				*@@*document.getelementById("drawToggle").classList.remove('selected');*@@*
-				*@@*document.getElementById("none" + "Toggle").style.color = textColorNotActive;*@@*
-				*@@*document.getElementById("none" + "Toggle").style.backgroundColor = "#550000";*@@*
-				*@@*document.getElementById("none" + "Toggle").style.border = "";*@@*
-				*@@*document.getElementById("none" + "Toggle").style.borderColor = borderColorNotActive;*@@*
-				*@@*element.checked = true;*@@*
-			}*@
+			}
 			if(element.name=="box"){
 				if(!element.classList.contains('disabled')){
 					if(document.getElementById("panToggle").classList.contains('selected')) {
@@ -266,16 +198,11 @@
 					if(!document.getElementById("drawToggle").classList.contains('selected')){
 						document.getElementById("panToggle").classList.remove('btn');
 						document.getElementById("panToggle").classList.add('disabled');
-						@*enablePan(document.getElementById("panToggle"));*@
 					}
 				} else {
 					if(document.getElementById("drawToggle").classList.contains('selected')){
 						document.getElementById("panToggle").classList.add('btn');
 						document.getElementById("panToggle").classList.remove('disabled');
-						@*if(element.name != "pan"){
-							document.getElementById("panToggle").classList.add('selected');
-							enablePan(document.getElementById("panToggle"));
-						}*@
 					}
 				}
 			} else {
@@ -283,7 +210,6 @@
 				if(!document.getElementById("drawToggle").classList.contains('selected')){
 					document.getElementById("panToggle").classList.remove('btn');
 					document.getElementById("panToggle").classList.add('disabled');
-					@*enablePan(document.getElementById("panToggle"));*@
 				}
 			}
 			for(key in drawControls) {
@@ -295,7 +221,6 @@
 						if(!document.getElementById("drawToggle").classList.contains('selected')){
 							mode(key, 'disable');
 						}
-						@*document.getElementById("noneToggle").classList.add('selected');*@
 					} else {
 						if(document.getElementById("drawToggle").classList.contains('selected')){
 							if(element.name == key){
@@ -303,20 +228,12 @@
 							}
 							mode(key, 'enable');
 						}
-						@*document.getElementById(key + "Toggle").style.color = textColorActive;*@
-						@*document.getElementById(key + "Toggle").style.backgroundColor = "#005500";*@
-						@*document.getElementById(key + "Toggle").style.border = "groove";*@
-						@*document.getElementById(key + "Toggle").style.borderColor = borderColorActive;*@
 					}
 				} else {
 					mode(key, 'deselect');
 					if(!document.getElementById("drawToggle").classList.contains('selected')){
 						mode(key, 'disable');
 					}
-					@*document.getElementById(key + "Toggle").style.color = textColorNotActive;*@
-					@*document.getElementById(key + "Toggle").style.backgroundColor = "#550000";*@
-					@*document.getElementById(key + "Toggle").style.border = "";*@
-					@*document.getElementById(key + "Toggle").style.borderColor = borderColorNotActive;*@
 				}
 			}
 		}
@@ -333,21 +250,14 @@
 				if(stop){
 					if(!element.classList.contains('disabled')){
 						element.classList.add('selected');
-						@*element.style.color = textColorActive;*@
-						@*element.style.backgroundColor = "#005500";*@
-						@*element.style.border = "groove";*@
-						@*element.style.borderColor = borderColorActive;*@
 					}
 				} else {
 					element.classList.remove('selected');
-					@*element.style.color = textColorNotActive;*@
-					@*element.style.backgroundColor = "#550000";*@
-					@*element.style.border = "";*@
-					@*element.style.borderColor = borderColorNotActive;*@
 				}
 			}
-		}
+		}*@
 
+		@*This function is used to set the state of buttons.*@
 		function mode(key, mode) {
 			var control = drawControls[key];
 			if(mode=='enable'){
@@ -365,75 +275,24 @@
 				document.getElementById(key + "Toggle").classList.remove('selected');
 			}
 		}
-
-		@*function loadData(){*@
-			@*window.open("http://localhost:9000/assets/test.php","Load Custom Data");*@
-		function getRequest() {
-		var req = false;
-		try{
-		// most browsers
-		req = new XMLHttpRequest();
-		} catch (e){
-		// IE
-		try{
-		req = new ActiveXObject("Msxml2.XMLHTTP");
-		} catch (e) {
-		// try an older version
-		try{
-		req = new ActiveXObject("Microsoft.XMLHTTP");
-		} catch (e){
-		return false;
-		}
-		}
-		}
-		return req;
-		}
-
-		function loadData() {
-		var ajax = getRequest();
-		ajax.onreadystatechange = function(){
-
-		}
-		ajax.open("GET", "do_query.php", true);
-		ajax.send(null);
-		}
-		@*function loadData2() {
-		$.get("test.php");
-		return false;
-		}*@
 	</script>
 </head>
 <body onload="init();">
 
-<div id="header_outterBorder">
-	<div id="header">
-		<img id="header_img" alt="Header Missing" src="@routes.Assets.at("images/team.png")">
-		<img id="group_img" alt="Header Missing" src="@routes.Assets.at("images/group.png")">
-	</div>
-</div>
-
-<div class="content_wrapper">
+<div id="contentWrapper" class="content_wrapper">
 	@content
 </div>
 
-<div class="button_wrapper">
+<div id="buttonWrapper" class="button_wrapper">
 	<button class="btn" value="Allow world wrapping" id="worldWrap" onclick="toggleRestrictedExtent(this)" >Allow world wrapping</button><br>
-	<button class="btn" name="draw" value="Toggle Draw" id="drawToggle" onclick="toggleControl(this);" >Toggle Draw Mode</button><br><br>
+	@*These buttons are for the draw controls. Use them if you wish*@
+	@*<button class="btn" name="draw" value="Toggle Draw" id="drawToggle" onclick="toggleControl(this);" >Toggle Draw Mode</button><br><br>
 	<button class="disabled" name="point" value="Draw Point" id="pointToggle" onclick="toggleControl(this);" >Draw Point</button><br>
 	<button class="disabled" name="line" value="Draw Line" id="lineToggle" onclick="toggleControl(this);" >Draw Line</button><br>
 	<button class="disabled" name="polygon" value="Draw Polygon" id="polygonToggle" onclick="toggleControl(this);" >Draw Polygon</button><br>
 	<button class="disabled" name="box" value="Draw Box" id="boxToggle" onclick="toggleControl(this);" >Draw Box</button><br>
 	<button class="disabled" name="drag" value="Drag Feature" id="dragToggle" onclick="toggleControl(this);" >Move Drawings</button><br>
-	<button class="disabled" name="pan" value="Enable pan while drawing" id="panToggle" onclick="enablePan(this);" >Enable Map Pan While Drawing</button><br><br><br><br><br><br>
-
-    @*<button class="btn" name="load" value="Load Custom Map" id="loadToggle" onclick="loadData();" >Load Custom Data</button>*@
-
-	<script type="text/javascript">
-		@*document.getElementById("worldWrap").click();*@
-		@*document.getElementById("panToggle").click();*@
-		@*document.getElementById("pointToggle").classList.toggle('turnoff');*@
-		@*document.ready(setActivity(document.getElementById("lineToggle"), "activate"));*@
-	</script>
+	<button class="disabled" name="pan" value="Enable pan while drawing" id="panToggle" onclick="enablePan(this);" >Enable Map Pan While Drawing</button><br>*@
 </div>
 
 </body>

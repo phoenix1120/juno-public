@@ -1,1 +1,0 @@
-gedit test.txt
