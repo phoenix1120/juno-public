@@ -4,29 +4,29 @@
     <list default="true" id="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" name="Default" comment="" />
     <ignored path="juno-shared.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="$PROJECT_DIR$/../slippy-map/.idea/workspace.xml" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1368132030213" ignored="false" />
-    <file path="$PROJECT_DIR$/../slippy-map/app/controllers/SlippyMap.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1368131904508" ignored="false" />
-    <file path="$PROJECT_DIR$/../tile-cache/app/views/main.scala.html" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1368131812918" ignored="false" />
-    <file path="$PROJECT_DIR$/../tile-cache/app/controllers/TileCache.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1368131768525" ignored="false" />
-    <file path="$PROJECT_DIR$/../slippy-map/target/scala-2.9.1/src_managed/main/routes_reverseRouting.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361993798506" ignored="false" />
-    <file path="/SlippyMap.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361993470482" ignored="false" />
-    <file path="$PROJECT_DIR$/../slippy-map/target/scala-2.9.1/src_managed/main/routes_routing.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361992190660" ignored="false" />
-    <file path="$PROJECT_DIR$/../tile-cache/conf/routes" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361992160036" ignored="false" />
-    <file path="/routes" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361992156574" ignored="false" />
-    <file path="/slippymap.scala.html" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361991991291" ignored="false" />
-    <file path="$PROJECT_DIR$/../slippy-map/app/views/slippymap.scala.html" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361991991291" ignored="false" />
-    <file path="$PROJECT_DIR$/../slippy-map/app/views/error.scala.html" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361991855724" ignored="false" />
-    <file path="/error.scala.html" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361991855307" ignored="false" />
-    <file path="$PROJECT_DIR$/../tile-cache/project/Build.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361990414488" ignored="false" />
-    <file path="/FIle.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361989320886" ignored="false" />
-    <file path="$PROJECT_DIR$/../slippy-map/conf/routes" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361989198489" ignored="false" />
-    <file path="$PROJECT_DIR$/../slippy-map/project/Build.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361988903995" ignored="false" />
-    <file path="/Build.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361988901414" ignored="false" />
-    <file path="$PROJECT_DIR$/../map-server/project/Build.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361988463280" ignored="false" />
-    <file path="/a.dummy" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361988220070" ignored="false" />
-    <file path="/Dummy.txt" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361994665734" ignored="false" />
-    <file path="/WebRequest.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361995774511" ignored="false" />
+    <file path="$PROJECT_DIR$/../slippy-map/.idea/workspace.xml" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1371096597447" ignored="false" />
     <file path="/TileCache.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361995848229" ignored="false" />
+    <file path="/WebRequest.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361995774511" ignored="false" />
+    <file path="/Dummy.txt" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361994665734" ignored="false" />
+    <file path="/a.dummy" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361988220070" ignored="false" />
+    <file path="$PROJECT_DIR$/../map-server/project/Build.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361988463280" ignored="false" />
+    <file path="/Build.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361988901414" ignored="false" />
+    <file path="$PROJECT_DIR$/../slippy-map/project/Build.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361988903995" ignored="false" />
+    <file path="$PROJECT_DIR$/../slippy-map/conf/routes" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361989198489" ignored="false" />
+    <file path="/FIle.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361989320886" ignored="false" />
+    <file path="$PROJECT_DIR$/../tile-cache/project/Build.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361990414488" ignored="false" />
+    <file path="/error.scala.html" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361991855307" ignored="false" />
+    <file path="$PROJECT_DIR$/../slippy-map/app/views/error.scala.html" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361991855724" ignored="false" />
+    <file path="$PROJECT_DIR$/../slippy-map/app/views/slippymap.scala.html" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361991991291" ignored="false" />
+    <file path="/slippymap.scala.html" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361991991291" ignored="false" />
+    <file path="/routes" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361992156574" ignored="false" />
+    <file path="$PROJECT_DIR$/../tile-cache/conf/routes" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361992160036" ignored="false" />
+    <file path="$PROJECT_DIR$/../slippy-map/target/scala-2.9.1/src_managed/main/routes_routing.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361992190660" ignored="false" />
+    <file path="/SlippyMap.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361993470482" ignored="false" />
+    <file path="$PROJECT_DIR$/../slippy-map/target/scala-2.9.1/src_managed/main/routes_reverseRouting.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1361993798506" ignored="false" />
+    <file path="$PROJECT_DIR$/../tile-cache/app/controllers/TileCache.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1368131768525" ignored="false" />
+    <file path="$PROJECT_DIR$/../tile-cache/app/views/main.scala.html" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1368131812918" ignored="false" />
+    <file path="$PROJECT_DIR$/../slippy-map/app/controllers/SlippyMap.scala" changelist="6a36a8a7-d4bd-4418-bfaa-2657a5b60ef0" time="1368131904508" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +93,7 @@
       <file leaf-file-name="WebRequest.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/web/WebRequest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="128" column="52" selection-start="3131" selection-end="3131" vertical-scroll-proportion="0.32387313">
+            <state line="128" column="52" selection-start="3131" selection-end="3131" vertical-scroll-proportion="0.36560935">
               <folding />
             </state>
           </provider>
@@ -304,10 +304,24 @@
               <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="juno-shared" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="juno-shared" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -326,14 +340,6 @@
       <option name="PROGRAM_PARAMETERS" />
       <method />
     </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-      <method />
-    </configuration>
     <configuration default="true" type="Specs2RunConfiguration" factoryName="Specs2">
       <module name="" />
       <setting name="path" value="" />
@@ -347,17 +353,12 @@
       <setting name="showProgressMessages" value="true" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -385,6 +386,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -438,7 +452,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="24" width="1317" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -452,7 +466,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21715185" sideWeight="0.99832493" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21715185" sideWeight="0.99832493" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -517,9 +531,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/project/Build.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="38" selection-start="655" selection-end="655" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="18" column="38" selection-start="655" selection-end="655" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/web/WebRequest.scala">
@@ -545,16 +557,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/conf/application.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/project/Build.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="57" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="12" column="57" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/web/WebRequest.scala">
@@ -566,9 +574,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/project/Build.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="38" selection-start="655" selection-end="655" vertical-scroll-proportion="0.4006678">
-          <folding />
-        </state>
+        <state line="18" column="38" selection-start="655" selection-end="655" vertical-scroll-proportion="0.4006678" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/system/environment/Environment.scala">
@@ -587,42 +593,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/project/plugins.sbt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/jquery-1.7.1.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/conf/application.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="2" selection-end="2" vertical-scroll-proportion="0.050083473">
-          <folding />
-        </state>
+        <state line="2" column="0" selection-start="2" selection-end="2" vertical-scroll-proportion="0.050083473" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/web/WebRequest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="52" selection-start="3131" selection-end="3131" vertical-scroll-proportion="0.32387313">
+        <state line="128" column="52" selection-start="3131" selection-end="3131" vertical-scroll-proportion="0.36560935">
           <folding />
         </state>
       </provider>

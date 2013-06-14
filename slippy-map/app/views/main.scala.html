@@ -41,12 +41,13 @@
 				{singeTile: true, transitionEffect: 'resize', wrapDateLine: true}
 			);
 
-			@*This layer if for use with custom data that can be created with Quantum GIS.*@
-			var custom = new OpenLayers.Layer.WMS(
-			"Custom Map Tile",
-			"http://localhost:8080/",
-			{layers: 'custom'}
-			);
+			@*This layer if for use with custom data that can be created with Quantum GIS.
+			Uncomment this section and below where it is added to the map layers if you choose to setup the custom dataset in the database. *@
+			@*var custom = new OpenLayers.Layer.WMS(
+				"Custom Map Tile",
+				"http://localhost:8080/",
+				{layers: 'custom'}
+			);*@
 
 			@*This layer is pulling tiles from a remote server, but the tiles are being cached locally.*@
 			var osgeo = new OpenLayers.Layer.WMS(
@@ -67,7 +68,7 @@
 			var osm = new OpenLayers.Layer.OSM();
 
 			@*If you comment out or remove any of the above layers, make sure to remove them from here as well.*@
-			map.addLayers([world, custom, osgeo, ocm, osm]);
+			map.addLayers([world, @*custom,*@ osgeo, ocm, osm]);
 
 			@*This section of code is used to create drawing controls for openlayers.*@
 

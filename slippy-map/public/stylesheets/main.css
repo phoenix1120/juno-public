@@ -5,40 +5,6 @@ body
 	background-color: #222222;
 }
 
-/* top, header image area style */
-#header_outterBorder
-{
-	text-align: center;
-	background: #111111;
-}
-#header
-{
-	width: auto;
-	height: 65px;
-	margin: auto;
-}
-#header_img
-{
-	float: left;
-	margin: 5px;
-	-moz-border-radius:10px;
-	-webkit-border-radius:10px;
-	border-radius:10px;
-	border: solid 5px;
-	border-color: #00dd00;
-}
-#group_img
-{
-	float: left;
-	margin-top: 5px;
-	-moz-border-radius:10px;
-	-webkit-border-radius:10px;
-	border-radius:10px;
-	border: solid 5px;
-	border-color: #00bb00;
-}
-}
-
 /* content area style */
 #content_main
 {

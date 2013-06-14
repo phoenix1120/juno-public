@@ -7,13 +7,15 @@
             <LineSymbolizer stroke="#cc00ff" stroke-width="1" />
         </Rule>
     </Style>
-    
+<!-- This section and the one below with the name "custom" are used with the custom dataset that can be setup and created with Quantum GIS -->
+<!--    
     <Style name="style2">
         <Rule>
             <PolygonSymbolizer fill="lightblue" />
             <LineSymbolizer stroke="darkblue" stroke-width="1" />
         </Rule>
     </Style>
+-->
 
     <Layer name="shape" srs="+init=epsg:4326">
         <StyleName>style1</StyleName>
@@ -27,6 +29,8 @@
         </Datasource>
     </Layer>
     
+
+<!--
     <Layer name="custom" srs="+init=epsg:4326">
         <StyleName>style2</StyleName>
         <Datasource>
@@ -38,5 +42,5 @@
             <Parameter name="type">postgis</Parameter>
         </Datasource>
     </Layer>
-
+-->
 </Map>
